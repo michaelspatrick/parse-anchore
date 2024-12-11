@@ -1,7 +1,14 @@
 #!/usr/bin/php -q
 <?php
-  $file = file("vulns.txt");
+  /*
+    Purpose: Script parses output from anchore.  It generates CSV output that can be imported into Google Sheets.
+    Written by: Michael Patrick
+    Date: December 11, 2024
+  */
 
+  // Configuration
+  $infile = "vulns.txt";  // output file from anchore
+  
   function strip_str($haystack, $needle1, $needle2) {
     $found = "";
     $start = strpos($haystack, $needle1) + strlen($needle1);
@@ -17,6 +24,7 @@
     return "\"".$str."\"";
   }
 
+  $file = file($infile);
   $count = 0;
   $percona_tool = "";
   echo "\"Component\",\"Priority\",\"Software\",\"Fixed Version\",\"CVE\",\"CVE URL\",\"eBay Vuln Level\"\n";
