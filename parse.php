@@ -27,7 +27,6 @@
   $file = file($infile);
   $count = 0;
   $percona_tool = "";
-  echo "\"Component\",\"Priority\",\"Software\",\"Fixed Version\",\"CVE\",\"CVE URL\",\"eBay Vuln Level\"\n";
   for ($i=0; $i < count($file); $i++) {
     $parts = explode("\t", $file[$i]);
 
@@ -52,6 +51,7 @@
   }
 
   // display CSV strings
+  echo "\"Component\",\"Priority\",\"Software\",\"Fixed Version\",\"CVE\",\"CVE URL\",\"eBay Vuln Level\"\n";
   foreach($results as $res) $sortAux[] = $res['priority'];
   array_multisort($sortAux, SORT_ASC, $results);
   for ($i=0; $i < count($results); $i++) {
